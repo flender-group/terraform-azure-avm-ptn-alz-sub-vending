@@ -31,7 +31,7 @@ locals {
   # subscription_resource_id is the Azure resource id of the subscription into which resources will be created.
   # We use the created sub resource id first, if it exists, otherwise we pick the subscription_id variable.
   # If this is blank then the subscription submodule is disabled an no subscription id has been supplied as an input variable.
-  subscription_resource_id = coalesce(local.subscription_module_output_subscription_resource_id, local.supplied_subscription_resource_id)
+  subscription_resource_id = coalesce(local.supplied_subscription_resource_id, local.subscription_module_output_subscription_resource_id)
   # subscription_resource_id is the Azure resource id of the subscription id that was supplied in the input variables.
   # If var.subscription_id is empty, then we will return an empty string so that we can correctly coalesce the subscription_resource_id output.
   supplied_subscription_resource_id = var.subscription_id == null ? null : "/subscriptions/${var.subscription_id}"
