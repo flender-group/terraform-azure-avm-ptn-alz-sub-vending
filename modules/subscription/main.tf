@@ -102,6 +102,9 @@ resource "azapi_resource_action" "subscription_cancel" {
   retry = {
     error_message_regex = ["ResourcesExistingOnSubscription"]
   }
+  query_parameters = {
+    "IgnoreResourceCheck" : ["true"]
+  }
   when = "destroy"
 
   timeouts {
